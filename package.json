@@ -1,0 +1,22 @@
+{
+  "name": "ratec",
+  "version": "1.0.0",
+  "description": "Proyecto final de la materia Desarrollo de Aplicaciones Web",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/franzbarron/proyecto-web.git"
+  },
+  "author": "Francisco Barrón <franz.barron@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/franzbarron/proyecto-web/issues"
+  },
+  "homepage": "https://github.com/franzbarron/proyecto-web#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
