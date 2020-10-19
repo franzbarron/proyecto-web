@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{> head}}
+
+<body>
+    {{> menu}}
+    <div class="container grid-xl">
+        <div class="columns">
+            {{#each categories as |category|}}
+                <div class="col-md-12 col-4">
+                    <div class="card">
+                        <div class="card-image">
+                            <a href="category/{{ category.name }}">
+                                <img src="http://img.thrfun.com/img/075/227/cat_l1.jpg"
+                                    alt="a cat i found on the internet" class="img-responsive">
+                            </a>
+                        </div>
+                        <div class="card-header">
+                            <div class="card-title-h5"><a href="category/{{ category.name }}">{{ category.name }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</body>
+
+</html>
