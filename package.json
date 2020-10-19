@@ -10,7 +10,10 @@
     "type": "git",
     "url": "git+https://github.com/franzbarron/proyecto-web.git"
   },
-  "author": "Francisco Barrón <franz.barron@outlook.com>",
+  "author": [
+    "Francisco Barrón <franz.barron@outlook.com>",
+    "Paola MAsiel Rijo Martínez <masiel.107@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/franzbarron/proyecto-web/issues"
