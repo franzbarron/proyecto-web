@@ -8,18 +8,23 @@
 <body>
     {{> menu}}
     <div class="container grid-xl">
+        <h1>{{ name }}</h1>
         <div class="columns">
-            {{#each categories as |category|}}
+            {{#each instalaciones as |instalacion|}}
                 <div class="col-md-12 col-4">
                     <div class="card">
                         <div class="card-image">
-                            <a href="category/{{ category.name }}">
-                                <img src="{{ category.img }}" alt="Picture related to category {{ category.name }}"
+                            <a href="/review/{{ instalacion.name }}">
+                                <img src="{{ instalacion.img }}" alt="Picture of {{ instalacion.name }}"
                                     class="img-responsive">
                             </a>
                         </div>
                         <div class="card-header">
-                            <div class="card-title-h5"><a href="category/{{ category.name }}">{{ category.name }}</a>
+                            <div class="card-title-h5 columns">
+                                <div class="column col-6">
+                                    <a href="/review/{{ instalacion.name }}">{{ instalacion.name }}</a>
+                                </div>
+                                <div class="column col-6 text-right">{{ instalacion.rating }}</div>
                             </div>
                         </div>
                     </div>
