@@ -39,5 +39,14 @@ app.get('/home', (_, res) => {
 });
 
 app.get('/Profile', (_, res) => {
-  res.render('Profile');
+  const data = {
+    categories: [
+      { name: 'lorem' },
+      { name: 'ipsum' },
+      { name: 'dolor' },
+      { name: 'sit' },
+      { name: 'amet' }
+    ]
+  };
+  res.render('Profile', data);
 });
