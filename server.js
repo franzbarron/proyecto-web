@@ -37,3 +37,7 @@ app.get('/home', (_, res) => {
   };
   res.render('home', data);
 });
+
+app.get('/Profile', (_, res) => {
+  res.render('Profile');
+});
