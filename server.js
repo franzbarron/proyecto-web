@@ -22,3 +22,17 @@ app.listen(PORT, () => {
 app.get('/', (_, res) => {
   res.render('Login');
 });
+
+app.get('/home', (_, res) => {
+  // placeholder data to send
+  const data = {
+    categories: [
+      { name: 'lorem' },
+      { name: 'ipsum' },
+      { name: 'dolor' },
+      { name: 'sit' },
+      { name: 'amet' }
+    ]
+  };
+  res.render('home', data);
+});
