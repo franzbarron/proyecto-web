@@ -4,11 +4,12 @@ require('dotenv').config();
 const express = require('express');
 
 const app = express();
+app.set('view engine', 'hbs');
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log('Listening on http://localhost:3000');
+  console.log(`Listening on http://localhost:${PORT}`);
 });
 
 app.get('/', (_, res) => {
