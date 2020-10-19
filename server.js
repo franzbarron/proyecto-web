@@ -7,6 +7,7 @@ const path = require('path');
 
 const app = express();
 app.set('view engine', 'hbs');
+app.use(express.static('public'))
 
 hbs.registerPartials(path.join(__dirname, 'views', 'partials'), (err) => {
   if (err) console.error(err);
