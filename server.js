@@ -87,3 +87,7 @@ app.get('/category/:name', (req, res) => {
 
   res.render('category', { name, instalaciones });
 });
+
+app.get('/Profile', (_, res) => {
+  res.render('Profile');
+});
