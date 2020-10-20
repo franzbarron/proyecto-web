@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{> head}}
+    <style>
+        .tile {
+            border: solid #b8b8b8 1px;
+            margin: 0.5rem;
+            padding: 0.25rem;
+        }
+
+        .review-name {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    {{> menu}}
+    <div class="container grid-xl">
+        <div class="columns">
+            <div class="column col-md-12 col-6">
+                <h1>{{ name }}</h1>
+                <img src="{{ image }}" alt="Picture of {{ name }}" class="img-responsive">
+                <div class="columns">
+                    <div class="column col-4">{{ rating }}</div>
+                    <div class="column col-8">{{ total-reviews }} people have reviewed this place</div>
+                </div>
+                <h2>Add your review</h2>
+                <p>// Estrellas aquí</p>
+                <textarea name="comments" id="comments" style="width: 100%"></textarea>
+                <div class="text-right">
+                    <button class="btn btn-primary">Post</button>
+                </div>
+            </div>
+            <div class="column col-md-12 col-6">
+                <h2>Reviews</h2>
+                {{#each reviews as |review|}}
+                    <div class="tile">
+                        <div class="tile-content">
+                            <p class="tile-title"><span class="review-name">{{ review.name }}</span> {{ review.rating }}
+                            </p>
+                            <p class="tile-subtitle">{{ review.comment}}</p>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
