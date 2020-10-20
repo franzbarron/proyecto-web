@@ -89,14 +89,13 @@ app.get('/category/:name', (req, res) => {
 });
 
 app.get('/Profile', (_, res) => {
+  //const { name } = req.params;
   const data = {
-    categories: [
-      { name: 'lorem' },
-      { name: 'ipsum' },
-      { name: 'dolor' },
-      { name: 'sit' },
-      { name: 'amet' }
-    ]
+    name: 'Paola Rijo',
+    email: 'masiel.107@gamil.com',
+    campus: 'Monterrey',
+    history: 'sit',
+    img: 'https://3dwarehouse.sketchup.com/warehouse/v1.0/publiccontent/c3dd6161-07a9-4ef5-b9bd-008c808a0fed'
   };
   res.render('Profile', data);
 });

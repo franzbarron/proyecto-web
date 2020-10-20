@@ -8,17 +8,26 @@
 <body>
     {{> menu}}
     <div class="container grid-xl">
-        <h1 class="hs text-left">Perfil</h1>
-        <div class="columns col-xl-5">
+        <h1 class="text-left">Profile</h1>
+        <div class="columns">
             <div class="column col-2">
-                <img src="{{category.name}}" class="img-responsive">
+                <img src="{{ img }}" class="img-responsive" alt="Profile picture of student: {{ name }}">
             </div>
-            <div class="column col-5">
-                <h2>FULANITO DE TAL</h2>
-                <h2>{{category.name}}</h2>
+            <div class="column col-10 text-left">
+                <h2>{{ name }}</h2>
+                <div class="columns">
+                    <div class="column col-6">
+                        <p>E-mail:</p>
+                        <p>Campus:</p>
+                    </div>
+                    <div class="column col-6">
+                        <p>{{email}}</p>
+                        <p>{{campus}}</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="column col-7 col-mr-auto text-right">
+        <div class="column col-11 col-mr-auto text-center">
             <div class="tile">
                 <div class="tile-icon">
                     <div class="example-tile-icon">
@@ -29,7 +38,12 @@
                     <h3 class="tile-title text-center">History</h3>
                     <p class="tile-subtitle">Earth's Mightiest Heroes joined forces to take on threats that were too big
                         for any one hero to tackle...</p>
+                    <p class="tile-subtitle">Earth's Mightiest Heroes joined forces to take on threats that were too big
+                        for any one hero to tackle...</p>
+                    <p class="tile-subtitle">Earth's Mightiest Heroes joined forces to take on threats that were too big
+                        for any one hero to tackle...</p>
                 </div>
+
 
             </div>
         </div>
