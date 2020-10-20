@@ -94,7 +94,28 @@ app.get('/Profile', (_, res) => {
     name: 'Paola Rijo',
     email: 'masiel.107@gamil.com',
     campus: 'Monterrey',
-    history: 'sit',
+    history: [
+      {
+        reviewname: 'Servilletero',
+        rating: '★★★★★'
+      },
+      {
+        reviewname: 'Dona tota',
+        rating: '★★★★☆'
+      },
+      {
+        reviewname: 'Chilaquiles tec',
+        rating: '★★☆☆☆'
+      },
+      {
+        reviewname: 'Mitec',
+        rating: '★★★★☆'
+      },
+      {
+        reviewname: 'Mode hibrido',
+        rating: '★★☆☆☆'
+      }
+    ],
     img: 'https://3dwarehouse.sketchup.com/warehouse/v1.0/publiccontent/c3dd6161-07a9-4ef5-b9bd-008c808a0fed'
   };
   res.render('Profile', data);
