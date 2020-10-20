@@ -7,17 +7,33 @@
 
 <body>
     {{> menu}}
-    <div class="container grid-xl text-center">
+    <div class="container grid-xl">
         <h1 class="hs text-left">Perfil</h1>
-        <div class="col"></div>
-
+        <div class="columns col-xl-5">
+            <div class="column col-2">
+                <img src="{{category.name}}" class="img-responsive">
+            </div>
+            <div class="column col-5">
+                <h2>FULANITO DE TAL</h2>
+                <h2>{{category.name}}</h2>
+            </div>
         </div>
-        {{!-- <h1 class="hs text-left">Perfil</h1>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe exercitationem commodi, facilis
-            voluptatibus magni ducimus quibusdam ad dolorum harum explicabo sint soluta, quam beatae dolorem
-            veritatis esse perferendis accusamus sapiente.</p>
-        <h4 class="hs">Login in to join</h4>
-        <button class="hs" type="button">Log in with Google</button> --}}
+        <div class="column col-7 col-mr-auto text-right">
+            <div class="tile">
+                <div class="tile-icon">
+                    <div class="example-tile-icon">
+                        <i class="icon icon-file centered"></i>
+                    </div>
+                </div>
+                <div class="tile-content">
+                    <h3 class="tile-title text-center">History</h3>
+                    <p class="tile-subtitle">Earth's Mightiest Heroes joined forces to take on threats that were too big
+                        for any one hero to tackle...</p>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 </body>
 
