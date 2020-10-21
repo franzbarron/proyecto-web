@@ -4,6 +4,7 @@ require('dotenv').config();
 const express = require('express');
 const hbs = require('hbs');
 const path = require('path');
+const { Client } = require('pg');
 
 const app = express();
 app.set('view engine', 'hbs');
@@ -14,6 +15,16 @@ hbs.registerPartials(path.join(__dirname, 'views', 'partials'), (err) => {
 });
 
 const PORT = process.env.PORT || 3000;
+
+const clientConfig = {
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE
+};
+
+const client = new Client(clientConfig);
+
+client.connect();
 
 app.listen(PORT, () => {
   console.log(`Listening on http://localhost:${PORT}`);
