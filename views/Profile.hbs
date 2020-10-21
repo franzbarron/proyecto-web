@@ -11,10 +11,8 @@
     <div class="container grid-xl">
         <h1 class="text-left">Profile</h1>
         <div class="columns">
-            <div class="column col-md-5 col-2">
+            <div class="column col-md-12 col-3 text-center">
                 <img src="{{ img }}" class="img-responsive" alt="Profile picture of student: {{ name }}">
-            </div>
-            <div class="column col-md-7 col-10 text-left">
                 <h2>{{ name }}</h2>
                 <div class="columns">
                     <div class="column col-3">
@@ -27,31 +25,23 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="column col-11 col-mr-auto text-center">
-            <div class="tile">
-                <div class="tile-icon">
-                    <div class="example-tile-icon">
-                        <i class="icon icon-file centered"></i>
-                    </div>
-                </div>
-                <div class="tile-content">
-                    <h3 class="tile-title text-center">History</h3>
-                    {{#each history as |Preview|}}
-                    <div class="column col-md-7 col-10 text-center">
-                        <div class="columns">
-                            <div class="column col-6">
+            <div class="column col-md-12 col-9 text-left">
+                <div class="tile">
+                    <div class="tile-content">
+                        <h3 class="tile-title text-center">History</h3>
+                        {{#each history as |Preview|}}
+                        <div class="columns text-center cajita">
+                            <div class="column col-6 text-right ">
                                 <p>{{Preview.reviewname}}</p>
                             </div>
-                            <div class="column col-6">
+                            <div class="column col-6 text-left ">
                                 <p>{{Preview.rating}}</p>
                             </div>
                         </div>
+
+                        {{/each}}
                     </div>
-                    {{/each}}
                 </div>
-
-
             </div>
         </div>
 
