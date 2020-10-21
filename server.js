@@ -20,7 +20,7 @@ app.listen(PORT, () => {
 });
 
 app.get('/', (_, res) => {
-  res.render('Login');
+  res.render('login');
 });
 
 app.get('/home', (_, res) => {
@@ -116,9 +116,10 @@ app.get('/Profile', (_, res) => {
         rating: '★★☆☆☆'
       }
     ],
-    img: 'https://3dwarehouse.sketchup.com/warehouse/v1.0/publiccontent/c3dd6161-07a9-4ef5-b9bd-008c808a0fed'
+    img:
+      'https://3dwarehouse.sketchup.com/warehouse/v1.0/publiccontent/c3dd6161-07a9-4ef5-b9bd-008c808a0fed'
   };
-  res.render('Profile', data);
+  res.render('profile', data);
 });
 
 app.get('/review/:name', (req, res) => {
