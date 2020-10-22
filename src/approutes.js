@@ -3,7 +3,9 @@ const express = require('express');
 const router = express.Router();
 
 // ===Other files===
-// require('./dbconfig');
+const dbController = require('./dbcontroller');
+
+const db = new dbController();
 
 const isLoggedIn = (req, res, next) => {
   if (req.user) next();
@@ -14,10 +16,8 @@ router.get('/', (_, res) => {
   res.render('login');
 });
 
-router.get('/home', isLoggedIn, (req, res) => {
+router.get('/home', isLoggedIn, (_, res) => {
   // placeholder data to send
-  const { sub, name, picture, email } = req.user._json;
-  console.log({ sub, name, picture, email });
   const data = {
     categories: [
       {
@@ -81,7 +81,7 @@ router.get('/category/:name', (req, res) => {
   res.render('category', { name, instalaciones });
 });
 
-router.get('/Profile', (_, res) => {
+router.get('/profile', isLoggedIn, (req, res) => {
   //const { name } = req.params;
   const data = {
     name: 'Paola Rijo',
