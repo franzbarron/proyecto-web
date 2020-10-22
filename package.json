@@ -10,9 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/franzbarron/proyecto-web.git"
   },
-  "author": [
+  "contributors": [
     "Francisco Barrón <franz.barron@outlook.com>",
-    "Paola MAsiel Rijo Martínez <masiel.107@gmail.com>"
+    "Paola Masiel Rijo Martínez <masiel.107@gmail.com>"
   ],
   "license": "MIT",
   "bugs": {
@@ -20,9 +20,12 @@
   },
   "homepage": "https://github.com/franzbarron/proyecto-web#readme",
   "dependencies": {
+    "cookie-session": "^1.4.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "hbs": "^4.1.1",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
     "pg": "^8.4.1"
   }
 }
