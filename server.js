@@ -26,6 +26,7 @@ const client = new Client(clientConfig);
 
 client.connect();
 
+
 app.listen(PORT, () => {
   console.log(`Listening on http://localhost:${PORT}`);
 });
