@@ -3,9 +3,9 @@ const express = require('express');
 const router = express.Router();
 
 // ===Other files===
-// const dbController = require('./dbcontroller');
+const dbController = require('./dbcontroller');
 
-// const db = new dbController();
+const db = new dbController();
 
 const isLoggedIn = (req, res, next) => {
   if (req.user) next();
@@ -17,37 +17,9 @@ router.get('/', (req, res) => {
   else res.render('login');
 });
 
-router.get('/home', isLoggedIn, (_, res) => {
-  // placeholder data to send
-  const data = {
-    categories: [
-      {
-        name: 'Instalaciones',
-        img: 'https://i.ytimg.com/vi/xQhEe-7ZuPc/hqdefault.jpg'
-      },
-      {
-        name: 'lorem',
-        img:
-          'https://kat-wallpapers.ambientcat.com/Achtergronden-480-360/Huisdieren-Tricolor-kitten-81.jpg'
-      },
-      {
-        name: 'ipsum',
-        img:
-          'https://kat-wallpapers.ambientcat.com/Achtergronden-480-360/Huisdieren-Tricolor-kitten-81.jpg'
-      },
-      {
-        name: 'dolor',
-        img:
-          'https://kat-wallpapers.ambientcat.com/Achtergronden-480-360/Huisdieren-Tricolor-kitten-81.jpg'
-      },
-      {
-        name: 'sit',
-        img:
-          'https://kat-wallpapers.ambientcat.com/Achtergronden-480-360/Huisdieren-Tricolor-kitten-81.jpg'
-      }
-    ]
-  };
-  res.render('home', data);
+router.get('/home', isLoggedIn, async (_, res) => {
+  const data = await db.getCategories();
+  res.render('home', { categories: data });
 });
 
 router.get('/category/:name', isLoggedIn, (req, res) => {

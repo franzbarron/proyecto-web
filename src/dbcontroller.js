@@ -29,6 +29,14 @@ class DbController {
       email
     ]);
   }
+
+  async getCategories() {
+    const rows = await client
+      .query('SELECT name, fotourl AS img FROM "Category"')
+      .then((r) => r.rows)
+      .catch((err) => console.error(err));
+    return rows;
+  }
 }
 
 module.exports = DbController;
