@@ -29,3 +29,8 @@
   height: 12rem;
   width: 100%;
 }
+
+.sticky {
+  position: sticky;
+  top: 1.8rem;
+}

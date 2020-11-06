@@ -15,23 +15,25 @@
         </div>
         <div class="columns">
             <div class="column col-md-12 col-6">
-                <h1>{{ name }}</h1>
-                <img src="{{ image }}" alt="Picture of {{ name }}" class="img-responsive">
-                <div class="columns">
-                    <div class="column col-4">{{ numToStars rating }}</div>
-                    <div class="column col-8 text-right">{{ total-reviews }} people have reviewed this place</div>
-                </div>
-                <h2>Add your review</h2>
-                <div>
-                    <button id="star-btn-1" class="star-btn unselected-star btn btn-link">★</button>
-                    <button id="star-btn-2" class="star-btn unselected-star btn btn-link">★</button>
-                    <button id="star-btn-3" class="star-btn unselected-star btn btn-link">★</button>
-                    <button id="star-btn-4" class="star-btn unselected-star btn btn-link">★</button>
-                    <button id="star-btn-5" class="star-btn unselected-star btn btn-link">★</button>
-                </div>
-                <textarea name="comments" id="comments"></textarea>
-                <div class="text-right">
-                    <button class="btn btn-primary" id="post-btn">Post</button>
+                <div class="sticky">
+                    <h1>{{ name }}</h1>
+                    <img src="{{ image }}" alt="Picture of {{ name }}" class="img-responsive">
+                    <div class="columns">
+                        <div class="column col-4">{{ numToStars rating }}</div>
+                        <div class="column col-8 text-right">{{ total-reviews }} people have reviewed this place</div>
+                    </div>
+                    <h2>Add your review</h2>
+                    <div>
+                        <button id="star-btn-1" class="star-btn unselected-star btn btn-link">★</button>
+                        <button id="star-btn-2" class="star-btn unselected-star btn btn-link">★</button>
+                        <button id="star-btn-3" class="star-btn unselected-star btn btn-link">★</button>
+                        <button id="star-btn-4" class="star-btn unselected-star btn btn-link">★</button>
+                        <button id="star-btn-5" class="star-btn unselected-star btn btn-link">★</button>
+                    </div>
+                    <textarea name="comments" id="comments"></textarea>
+                    <div class="text-right">
+                        <button class="btn btn-primary" id="post-btn">Post</button>
+                    </div>
                 </div>
             </div>
             <div class="column col-md-12 col-6">
