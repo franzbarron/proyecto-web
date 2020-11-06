@@ -37,6 +37,18 @@ class DbController {
       .catch((err) => console.error(err));
     return rows;
   }
+
+  async getServices(category) {
+    const rows = await client
+      .query(
+        'SELECT s.name, s.fotourl AS img FROM "Service" s, "Category" c WHERE c.name=$1 AND s.category=c.categoryid',
+        [category]
+      )
+      .then((r) => r.rows)
+      .catch((err) => console.error(err));
+
+    return rows;
+  }
 }
 
 module.exports = DbController;

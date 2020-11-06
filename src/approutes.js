@@ -18,39 +18,14 @@ router.get('/', (req, res) => {
 });
 
 router.get('/home', isLoggedIn, async (_, res) => {
-  const data = await db.getCategories();
-  res.render('home', { categories: data });
+  const categories = await db.getCategories();
+  res.render('home', { categories });
 });
 
-router.get('/category/:name', isLoggedIn, (req, res) => {
+router.get('/category/:name', isLoggedIn, async (req, res) => {
   const { name } = req.params;
 
-  // placeholder data to send
-  const instalaciones = [
-    {
-      name: 'Biblioteca',
-      img:
-        'https://tec.mx/sites/default/files/styles/crop_galeria_style/public/2018-08/BiblioTEC_Gal_1aniv%20(5).jpg?itok=rzGKh0lp',
-      rating: '★★★★★'
-    },
-    {
-      name: 'CETEC',
-      img: 'https://i.ytimg.com/vi/Eiv1owoPsVY/maxresdefault.jpg',
-      rating: '★★☆☆☆'
-    },
-    {
-      name: 'Rectoría',
-      img: 'https://tec.mx/sites/default/files/2018-12/mural-1920x1080_0.jpg',
-      rating: '★★★★★'
-    },
-    {
-      name: 'Centro de Congresos',
-      img:
-        'https://3dwarehouse.sketchup.com/warehouse/v1.0/publiccontent/c3dd6161-07a9-4ef5-b9bd-008c808a0fed',
-      rating: '★★★★☆'
-    }
-  ];
-
+  const instalaciones = await db.getServices(name);
   res.render('category', { name, instalaciones });
 });
 
