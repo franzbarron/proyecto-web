@@ -3,51 +3,33 @@
 
 <head>
     {{> head}}
-    <style>
-        .tile {
-            border: solid #b8b8b8 1px;
-            margin: 0.5rem;
-            padding: 0.25rem;
-        }
-
-        .review-name {
-            font-size: 1rem;
-        }
-
-        .star-btn {
-            -webkit-text-stroke: 1px black;
-        }
-
-        .unselected-star {
-            color: white;
-        }
-
-        .selected-star {
-            color: yellow;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/review.css">
 </head>
 
 <body>
     {{> menu}}
     <div class="container grid-xl">
+        <div class="toast toast-error hidden">
+            <button class="btn btn-clear float-right"></button>
+            Please rate {{ name }} before submiting your review.
+        </div>
         <div class="columns">
             <div class="column col-md-12 col-6">
                 <h1>{{ name }}</h1>
                 <img src="{{ image }}" alt="Picture of {{ name }}" class="img-responsive">
                 <div class="columns">
-                    <div class="column col-4">{{ rating }}</div>
+                    <div class="column col-4">{{ numToStars rating }}</div>
                     <div class="column col-8 text-right">{{ total-reviews }} people have reviewed this place</div>
                 </div>
                 <h2>Add your review</h2>
                 <div>
-                    <button id="star-btn-1" class="star-btn unselected-star">★</button>
-                    <button id="star-btn-2" class="star-btn unselected-star">★</button>
-                    <button id="star-btn-3" class="star-btn unselected-star">★</button>
-                    <button id="star-btn-4" class="star-btn unselected-star">★</button>
-                    <button id="star-btn-5" class="star-btn unselected-star">★</button>
+                    <button id="star-btn-1" class="star-btn unselected-star btn btn-link">★</button>
+                    <button id="star-btn-2" class="star-btn unselected-star btn btn-link">★</button>
+                    <button id="star-btn-3" class="star-btn unselected-star btn btn-link">★</button>
+                    <button id="star-btn-4" class="star-btn unselected-star btn btn-link">★</button>
+                    <button id="star-btn-5" class="star-btn unselected-star btn btn-link">★</button>
                 </div>
-                <textarea name="comments" id="comments" style="width: 100%"></textarea>
+                <textarea name="comments" id="comments"></textarea>
                 <div class="text-right">
                     <button class="btn btn-primary" id="post-btn">Post</button>
                 </div>
@@ -57,7 +39,8 @@
                 {{#each reviews as |review|}}
                     <div class="tile">
                         <div class="tile-content">
-                            <p class="tile-title"><span class="review-name">{{ review.name }}</span> {{ review.rating }}
+                            <p class="tile-title"><span class="review-name">{{ review.name }}</span>
+                                {{ numToStars review.rating }}
                             </p>
                             <p class="tile-subtitle">{{ review.comment}}</p>
                         </div>

@@ -33,6 +33,14 @@ hbs.registerPartials(path.join(__dirname, 'views', 'partials'), (err) => {
   if (err) console.error(err);
 });
 
+hbs.registerHelper(
+  'numToStars',
+  (num) =>
+    `${Array(num).fill('★').join('')}${Array(5 - num)
+      .fill('☆')
+      .join('')}`
+);
+
 // ===a===
 const PORT = process.env.PORT || 3000;
 

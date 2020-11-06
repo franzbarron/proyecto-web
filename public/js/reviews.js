@@ -1,8 +1,22 @@
 let starBtns = document.querySelectorAll('.star-btn');
 let selectedStars = 0;
+const errorToast = document.querySelector('.toast.toast-error');
+
+document
+  .querySelector('.btn.btn-clear.float-right')
+  .addEventListener('click', () => {
+    errorToast.classList.add('hidden');
+  });
 
 document.querySelector('#post-btn').addEventListener('click', () => {
-  const comment = document.querySelector('#comments').value;
+  if (selectedStars === 0) {
+    errorToast.classList.remove('hidden');
+    return;
+  }
+
+  const commentTextArea = document.querySelector('#comments');
+
+  const comment = commentTextArea.value;
 
   const options = {
     method: 'POST',
@@ -16,10 +30,11 @@ document.querySelector('#post-btn').addEventListener('click', () => {
     })
   };
 
-  fetch('/review', options)
-    .then((res) => res.text())
-    .then((res) => console.log(res))
-    .catch((err) => console.error(err));
+  commentTextArea.value = '';
+
+  fetch('/review', options).then((res) => {
+    if (res.status === 200) location.reload();
+  });
 });
 
 starBtns.forEach((star) => {
@@ -30,8 +45,8 @@ starBtns.forEach((star) => {
     }
     const starNumber = e.target.id.split('-')[2];
     for (let i = 0; i < starNumber; i++) {
-      starBtns[i].classList.toggle('unselected-star');
-      starBtns[i].classList.toggle('selected-star');
+      starBtns[i].classList.remove('unselected-star');
+      starBtns[i].classList.add('selected-star');
     }
 
     selectedStars = parseInt(starNumber);

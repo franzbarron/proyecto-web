@@ -62,13 +62,33 @@ class DbController {
     return rows[0];
   }
 
-  async getReviews(service) {
+  async getServiceReviews(service) {
     const rows = await client
-      .query(`SELECT * FROM "Review"`)
+      .query(
+        `SELECT r.comment, u.nombre AS name, r.rating
+      FROM "Review" r, "Service" s, "User" u
+      WHERE s.name=$1 AND r.serviceid=s.serviceid
+      AND r.userid=u.userid`,
+        [service]
+      )
       .then((r) => r.rows)
       .catch((err) => console.error(err));
 
     return rows;
+  }
+
+  async getServiceAverage(service) {
+    const rows = await client
+      .query(
+        `SELECT AVG(r.rating)
+      FROM "Review" r, "Service" s
+      WHERE s.name=$1 AND r.serviceid=s.serviceid`,
+        [service]
+      )
+      .then((r) => r.rows)
+      .catch((err) => console.error(err));
+
+    return rows[0];
   }
 
   async getServiceID(service) {
@@ -83,7 +103,6 @@ class DbController {
   async addReview(comment, userid, service, rating) {
     const { serviceid } = await this.getServiceID(service);
 
-    console.log(serviceid);
     client.query(
       `INSERT INTO "Review"(comment, userid, serviceid, rating)
     VALUES($1, $2, $3, $4)`,
