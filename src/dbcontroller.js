@@ -18,7 +18,6 @@ class DbController {
       .query('SELECT * FROM "User" WHERE userid=$1', [id])
       .then((r) => r.rows)
       .catch((err) => console.error(err));
-    console.log(rows);
     return rows.length ? rows[0] : null;
   }
 

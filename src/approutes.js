@@ -3,17 +3,18 @@ const express = require('express');
 const router = express.Router();
 
 // ===Other files===
-const dbController = require('./dbcontroller');
+// const dbController = require('./dbcontroller');
 
-const db = new dbController();
+// const db = new dbController();
 
 const isLoggedIn = (req, res, next) => {
   if (req.user) next();
   else res.redirect('/');
 };
 
-router.get('/', (_, res) => {
-  res.render('login');
+router.get('/', (req, res) => {
+  if (req.isAuthenticated()) res.redirect('/home');
+  else res.render('login');
 });
 
 router.get('/home', isLoggedIn, (_, res) => {
@@ -49,7 +50,7 @@ router.get('/home', isLoggedIn, (_, res) => {
   res.render('home', data);
 });
 
-router.get('/category/:name', (req, res) => {
+router.get('/category/:name', isLoggedIn, (req, res) => {
   const { name } = req.params;
 
   // placeholder data to send
@@ -112,10 +113,12 @@ router.get('/profile', isLoggedIn, (req, res) => {
     img:
       'https://3dwarehouse.sketchup.com/warehouse/v1.0/publiccontent/c3dd6161-07a9-4ef5-b9bd-008c808a0fed'
   };
+  // const { name, picture: img, email } = req.user;
   res.render('profile', data);
+  // res.render('profile', { name, img, email, campus: 'Monterrey' });
 });
 
-router.get('/review/:name', (req, res) => {
+router.get('/review/:name', isLoggedIn, (req, res) => {
   const { name } = req.params;
 
   // Placeholder data to send
