@@ -13,6 +13,18 @@
         .review-name {
             font-size: 1rem;
         }
+
+        .star-btn {
+            -webkit-text-stroke: 1px black;
+        }
+
+        .unselected-star {
+            color: white;
+        }
+
+        .selected-star {
+            color: yellow;
+        }
     </style>
 </head>
 
@@ -28,10 +40,16 @@
                     <div class="column col-8 text-right">{{ total-reviews }} people have reviewed this place</div>
                 </div>
                 <h2>Add your review</h2>
-                <p>// Estrellas aquí</p>
+                <div>
+                    <button id="star-btn-1" class="star-btn unselected-star">★</button>
+                    <button id="star-btn-2" class="star-btn unselected-star">★</button>
+                    <button id="star-btn-3" class="star-btn unselected-star">★</button>
+                    <button id="star-btn-4" class="star-btn unselected-star">★</button>
+                    <button id="star-btn-5" class="star-btn unselected-star">★</button>
+                </div>
                 <textarea name="comments" id="comments" style="width: 100%"></textarea>
                 <div class="text-right">
-                    <button class="btn btn-primary">Post</button>
+                    <button class="btn btn-primary" id="post-btn">Post</button>
                 </div>
             </div>
             <div class="column col-md-12 col-6">
@@ -48,6 +66,7 @@
             </div>
         </div>
     </div>
+    <script src="/js/reviews.js"></script>
 </body>
 
 </html>

@@ -25,7 +25,7 @@ router.get('/home', isLoggedIn, async (_, res) => {
 router.get('/category/:name', isLoggedIn, async (req, res) => {
   const { name } = req.params;
 
-  const instalaciones = await db.getServices(name);
+  const instalaciones = await db.getAllServices(name);
   res.render('category', { name, instalaciones });
 });
 
@@ -65,14 +65,16 @@ router.get('/profile', isLoggedIn, (req, res) => {
   // res.render('profile', { name, img, email, campus: 'Monterrey' });
 });
 
-router.get('/review/:name', isLoggedIn, (req, res) => {
+router.get('/review/:name', isLoggedIn, async (req, res) => {
   const { name } = req.params;
+
+  const serviceData = await db.getService(name);
+  console.log(await db.getReviews());
 
   // Placeholder data to send
   const data = {
     name,
-    image:
-      'https://tec.mx/sites/default/files/styles/crop_galeria_style/public/2018-08/BiblioTEC_Gal_1aniv%20(5).jpg?itok=rzGKh0lp',
+    image: serviceData.img,
     rating: '★★★★★',
     'total-reviews': 70,
     reviews: [
@@ -115,7 +117,20 @@ router.get('/review/:name', isLoggedIn, (req, res) => {
     ]
   };
 
+  // console.log(serviceData);
+
   res.render('review', data);
+});
+
+router.post('/review', (req, res) => {
+  // console.log(req.body);
+  // console.log(req.user);
+  const { comment, rating, service } = req.body;
+  const { id } = req.user;
+
+  db.addReview(comment, id, service, rating);
+
+  res.send('hello');
 });
 
 module.exports = router;

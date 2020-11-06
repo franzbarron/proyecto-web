@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(
   cookieSession({
     name: 'ratec-session',
-    keys: ['fjpew', 'piuef']
+    keys: [process.env.COOKIE_KEY_1, process.env.COOKIE_KEY_2]
   })
 );
 app.use(passport.initialize());

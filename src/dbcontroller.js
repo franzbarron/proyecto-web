@@ -38,7 +38,7 @@ class DbController {
     return rows;
   }
 
-  async getServices(category) {
+  async getAllServices(category) {
     const rows = await client
       .query(
         'SELECT s.name, s.fotourl AS img FROM "Service" s, "Category" c WHERE c.name=$1 AND s.category=c.categoryid',
@@ -48,6 +48,47 @@ class DbController {
       .catch((err) => console.error(err));
 
     return rows;
+  }
+
+  async getService(service) {
+    const rows = await client
+      .query(
+        `SELECT serviceid, name, category, fotourl AS img FROM "Service" WHERE name=$1`,
+        [service]
+      )
+      .then((r) => r.rows)
+      .catch((err) => console.error(err));
+
+    return rows[0];
+  }
+
+  async getReviews(service) {
+    const rows = await client
+      .query(`SELECT * FROM "Review"`)
+      .then((r) => r.rows)
+      .catch((err) => console.error(err));
+
+    return rows;
+  }
+
+  async getServiceID(service) {
+    const rows = await client
+      .query(`SELECT serviceid FROM "Service" WHERE name=$1`, [service])
+      .then((r) => r.rows)
+      .catch((err) => console.error(err));
+
+    return rows[0];
+  }
+
+  async addReview(comment, userid, service, rating) {
+    const { serviceid } = await this.getServiceID(service);
+
+    console.log(serviceid);
+    client.query(
+      `INSERT INTO "Review"(comment, userid, serviceid, rating)
+    VALUES($1, $2, $3, $4)`,
+      [comment, userid, serviceid, rating]
+    );
   }
 }
 
