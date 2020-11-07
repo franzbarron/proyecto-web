@@ -33,13 +33,17 @@ hbs.registerPartials(path.join(__dirname, 'views', 'partials'), (err) => {
   if (err) console.error(err);
 });
 
-hbs.registerHelper(
-  'numToStars',
-  (num) =>
-    `${Array(num).fill('★').join('')}${Array(5 - num)
+hbs.registerHelper('numToStars', (num) => {
+  console.log(num);
+  rounded = Math.round(num);
+  let str = '';
+  if (rounded > 0) str += Array(rounded).fill('★').join('');
+  if (rounded < 5)
+    str += Array(5 - rounded)
       .fill('☆')
-      .join('')}`
-);
+      .join('');
+  return str;
+});
 
 // ===a===
 const PORT = process.env.PORT || 3000;

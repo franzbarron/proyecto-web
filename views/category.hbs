@@ -10,21 +10,21 @@
     <div class="container grid-xl">
         <h1>{{ name }}</h1>
         <div class="columns">
-            {{#each instalaciones as |instalacion|}}
+            {{#each servicios as |servicio|}}
                 <div class="col-md-12 col-4">
                     <div class="card">
                         <div class="card-image">
-                            <a href="/review/{{ instalacion.name }}">
-                                <img src="{{ instalacion.img }}" alt="Picture of {{ instalacion.name }}"
+                            <a href="/review/{{ servicio.name }}">
+                                <img src="{{ servicio.img }}" alt="Picture of {{ servicio.name }}"
                                     class="img-responsive">
                             </a>
                         </div>
                         <div class="card-header">
                             <div class="card-title-h5 columns">
                                 <div class="column col-6">
-                                    <a href="/review/{{ instalacion.name }}">{{ instalacion.name }}</a>
+                                    <a href="/review/{{ servicio.name }}">{{ servicio.name }}</a>
                                 </div>
-                                <div class="column col-6 text-right">{{ instalacion.rating }}</div>
+                                <div class="column col-6 text-right">{{ numToStars servicio.rating }}</div>
                             </div>
                         </div>
                     </div>

@@ -41,7 +41,12 @@ class DbController {
   async getAllServices(category) {
     const rows = await client
       .query(
-        'SELECT s.name, s.fotourl AS img FROM "Service" s, "Category" c WHERE c.name=$1 AND s.category=c.categoryid',
+        `SELECT s.name, s.fotourl AS img, AVG(r.rating) as rating
+        FROM "Service" s, "Category" c, "Review" r
+        WHERE c.name=$1
+        AND s.category=c.categoryid
+        AND r.serviceid=s.serviceid
+        GROUP BY s.name, img`,
         [category]
       )
       .then((r) => r.rows)
@@ -104,9 +109,9 @@ class DbController {
     const { serviceid } = await this.getServiceID(service);
 
     client.query(
-      `INSERT INTO "Review"(comment, userid, serviceid, rating)
-    VALUES($1, $2, $3, $4)`,
-      [comment, userid, serviceid, rating]
+      `INSERT INTO "Review"(comment, userid, serviceid, rating, reviewdate)
+    VALUES($1, $2, $3, $4, $5)`,
+      [comment, userid, serviceid, rating, new Date()]
     );
   }
 }

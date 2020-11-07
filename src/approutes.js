@@ -9,7 +9,8 @@ const db = new dbController();
 
 const isLoggedIn = (req, res, next) => {
   if (req.user) next();
-  else res.redirect('/');
+  else if (req.method === 'POST') res.sendStatus(401);
+  else res.status(401).redirect('/');
 };
 
 router.get('/', (req, res) => {
@@ -25,8 +26,11 @@ router.get('/home', isLoggedIn, async (_, res) => {
 router.get('/category/:name', isLoggedIn, async (req, res) => {
   const { name } = req.params;
 
-  const instalaciones = await db.getAllServices(name);
-  res.render('category', { name, instalaciones });
+  const servicios = await db.getAllServices(name);
+
+  console.log(servicios);
+
+  res.render('category', { name, servicios });
 });
 
 router.get('/profile', isLoggedIn, (req, res) => {
@@ -87,13 +91,9 @@ router.get('/review/:name', isLoggedIn, async (req, res) => {
   res.render('review', data);
 });
 
-router.post('/review', (req, res) => {
-  // console.log(req.body);
-  // console.log(req.user);
+router.post('/review', isLoggedIn, (req, res) => {
   const { comment, rating, service } = req.body;
   const { id } = req.user;
-
-  // console.log({ comment, id, service, rating });
 
   db.addReview(comment, id, service, rating);
 
