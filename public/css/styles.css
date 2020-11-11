@@ -3,3 +3,6 @@ header {
   top: 0;
   background-color: white;
 }
+.tile-subtitle{
+  text-overflow: '';
+}

@@ -12,7 +12,7 @@
         <h1 class="text-left">Profile</h1>
         <div class="columns">
             <div class="column col-md-12 col-3 text-center">
-                <img src="{{ img }}" class="img-responsive" alt="Profile picture of student: {{ name }}">
+                <img src="{{ img }}" class="img-responsive img-fit-cover" alt="Profile picture of student: {{ name }}">
                 <h2>{{ name }}</h2>
                 <div class="columns">
                     <div class="column col-3">
@@ -26,22 +26,17 @@
                 </div>
             </div>
             <div class="column col-md-12 col-9 text-left">
-                <div class="tile">
+                <h3 class="tile-title text-center">History</h3>
+                {{#each history as |Preview|}}
+                <div class="tile ">
                     <div class="tile-content">
-                        <h3 class="tile-title text-center">History</h3>
-                        {{#each history as |Preview|}}
-                        <div class="columns text-center cajita">
-                            <div class="column col-6 text-right ">
-                                <p>{{Preview.name}}</p>
-                            </div>
-                            <div class="column col-6 text-left ">
-                                <p>{{numToStars Preview.rating}}</p>
-                            </div>
-                        </div>
-
-                        {{/each}}
+                        <p class="tile-title"><span class="review-name">{{Preview.name}}</span>
+                            {{ numToStars Preview.rating }}
+                        </p>
+                        <p class="tile-subtitle">{{ Preview.comment}}</p>
                     </div>
                 </div>
+                {{/each}}
             </div>
         </div>
 
