@@ -47,7 +47,8 @@
                         </div>
                         <div class="tile-content">
                             <p class="tile-title"><span class="review-name">{{ review.name }}</span>
-                                {{ numToStars review.rating }}
+                                <span class="review-rating">{{ numToStars review.rating }}</span><br>
+                                <small>{{ parseDate review.reviewdate }}</small>
                             </p>
                             <p class="tile-subtitle">{{ review.comment}}</p>
                         </div>

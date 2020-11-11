@@ -33,19 +33,16 @@ router.get('/category/:name', isLoggedIn, async (req, res) => {
 
 router.get('/profile', isLoggedIn, async (req, res) => {
   const { name, id, picture: img, email } = req.user;
-  const userData = await db.getUser(id)
+  const userRevies = await db.getUserReviews(id);
 
   const data = {
     name,
     email,
-    campus: "Monterrey",
+    campus: 'Monterrey',
     img,
-    history: 
-      userData   
-  }
-  console.log(userData);
+    history: userRevies
+  };
   res.render('profile', data);
-  // res.render('profile', { name, img, email, campus: 'Monterrey' });
 });
 
 router.get('/review/:name', isLoggedIn, async (req, res) => {

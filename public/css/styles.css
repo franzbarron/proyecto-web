@@ -1,8 +1,52 @@
+:root {
+  --jet: #353535;
+  --ming: #3c6e71;
+  --white: #ffffff;
+  --grainsboro: #ededed;
+  --grainsboro-secondary: #a9a9a9;
+  --indigo: #284b63;
+}
+
+body {
+  background-color: var(--grainsboro);
+  color: var(--jet) !important;
+}
+
 header {
   position: sticky;
   top: 0;
-  background-color: white;
+  background-color: var(--indigo);
   z-index: 99;
+  font-size: 2em;
+  padding: 0 0.5rem;
+}
+
+a.btn.btn-link,
+a.navbar-brand.mr-2 {
+  color: var(--white) !important;
+}
+
+.popover-container {
+  background-color: var(--indigo);
+}
+
+li.nav-item > a {
+  color: var(--white) !important;
+  font-size: 0.85rem;
+  padding-top: 0;
+}
+
+li.nav-item {
+  margin-top: 0;
+}
+
+.card {
+  background-color: var(--white);
+  border: solid #b8b8b8 1px;
+}
+
+.card-title-h5 > a {
+  color: var(--jet) !important;
 }
 
 .hidden {
@@ -15,6 +59,29 @@ header {
   background-color: white;
   z-index: 99;
 }
-.tile-subtitle{
+.tile-subtitle {
   text-overflow: '';
+}
+
+.btn.btn-primary {
+  background-color: var(--ming);
+  border-color: #2b5052;
+}
+.btn.btn-primary:hover {
+  background-color: #325c5e;
+  border-color: #2b5052;
+}
+
+.btn.btn-secondary {
+  background-color: #00887a;
+  color: var(--white);
+  border-color: #2b5052;
+}
+.btn.btn-secondary:hover {
+  background-color: var(--grainsboro);
+  border-color: #2b5052;
+}
+
+.review-rating {
+  color: var(--ming);
 }

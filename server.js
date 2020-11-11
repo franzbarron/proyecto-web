@@ -44,6 +44,15 @@ hbs.registerHelper('numToStars', (num) => {
   return str;
 });
 
+hbs.registerHelper('parseDate', (date) =>
+  date.toLocaleDateString(undefined, {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })
+);
+
 // ===a===
 const PORT = process.env.PORT || 3000;
 

@@ -1,15 +1,7 @@
-.lineBar{
-    border-bottom: 1px solid black;
+.lineBar {
+  border-bottom: 1px solid black;
 }
 
-.title-m{
-    margin: 0.8em 0 0.3em 0.2em;
-}
-
-.hs{
-    margin-top: 0.5em;
-}
-
-.navBut{
-    margin-right: 0.5em;
+header {
+  padding: 0.5rem;
 }

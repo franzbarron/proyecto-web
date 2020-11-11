@@ -67,13 +67,14 @@ class DbController {
     return rows[0];
   }
 
-  async getUser(user) {
+  async getUserReviews(user) {
     const rows = await client
       .query(
-        `SELECT s.name, r.rating, r.comment 
+        `SELECT s.name, r.rating, r.comment, r.reviewdate 
         FROM "Service" s, "Review" r
         WHERE r.serviceid = s.serviceid
-        AND r.userid = $1`,
+        AND r.userid = $1
+        ORDER BY r.reviewdate DESC`,
         [user]
       )
       .then((r) => r.rows)
