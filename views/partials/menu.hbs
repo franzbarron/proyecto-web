@@ -5,7 +5,22 @@
     <section class="navbar-section">
         <div class="hide-sm">
             <a href="/home" class="btn btn-link">Home</a>
-            <a href="#" class="btn btn-link">Categories</a>
+            <div class="popover popover-bottom">
+                <a href="#" class="btn btn-link">Categories</a>
+                <div class="popover-container bg-secondary">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a href="/category/Instalaciones">Instalaciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/category/Cafeterías">Cafeterías</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/category/Servicios en línea">Servicios en línea</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             <a href="/profile" class="btn btn-link">Profile</a>
             <a href="/auth/logout" class="btn btn-link">Log out</a>
         </div>
@@ -14,3 +29,5 @@
         </div>
     </section>
 </header>
+
+{{!-- {{> menu-m}} --}}

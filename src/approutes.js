@@ -28,8 +28,6 @@ router.get('/category/:name', isLoggedIn, async (req, res) => {
 
   const servicios = await db.getAllServices(name);
 
-  console.log(servicios);
-
   res.render('category', { name, servicios });
 });
 
@@ -85,8 +83,6 @@ router.get('/review/:name', isLoggedIn, async (req, res) => {
     'total-reviews': reviewComments.length,
     reviews: reviewComments
   };
-
-  // console.log(serviceData);
 
   res.render('review', data);
 });

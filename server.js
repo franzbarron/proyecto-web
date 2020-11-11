@@ -34,7 +34,6 @@ hbs.registerPartials(path.join(__dirname, 'views', 'partials'), (err) => {
 });
 
 hbs.registerHelper('numToStars', (num) => {
-  console.log(num);
   rounded = Math.round(num);
   let str = '';
   if (rounded > 0) str += Array(rounded).fill('★').join('');
