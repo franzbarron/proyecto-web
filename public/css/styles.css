@@ -15,3 +15,6 @@ header {
   background-color: white;
   z-index: 99;
 }
+.tile-subtitle{
+  text-overflow: '';
+}
