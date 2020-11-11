@@ -33,38 +33,19 @@ router.get('/category/:name', isLoggedIn, async (req, res) => {
   res.render('category', { name, servicios });
 });
 
-router.get('/profile', isLoggedIn, (req, res) => {
-  //const { name } = req.params;
+router.get('/profile', isLoggedIn, async (req, res) => {
+  const { name, id, picture: img, email } = req.user;
+  const userData = await db.getUser(id)
+
   const data = {
-    name: 'Paola Rijo',
-    email: 'masiel.107@gamil.com',
-    campus: 'Monterrey',
-    history: [
-      {
-        reviewname: 'Servilletero',
-        rating: '★★★★★'
-      },
-      {
-        reviewname: 'Dona tota',
-        rating: '★★★★☆'
-      },
-      {
-        reviewname: 'Chilaquiles tec',
-        rating: '★★☆☆☆'
-      },
-      {
-        reviewname: 'Mitec',
-        rating: '★★★★☆'
-      },
-      {
-        reviewname: 'Mode hibrido',
-        rating: '★★☆☆☆'
-      }
-    ],
-    img:
-      'https://3dwarehouse.sketchup.com/warehouse/v1.0/publiccontent/c3dd6161-07a9-4ef5-b9bd-008c808a0fed'
-  };
-  // const { name, picture: img, email } = req.user;
+    name,
+    email,
+    campus: "Monterrey",
+    img,
+    history: 
+      userData   
+  }
+  console.log(userData);
   res.render('profile', data);
   // res.render('profile', { name, img, email, campus: 'Monterrey' });
 });

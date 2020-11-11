@@ -67,6 +67,20 @@ class DbController {
     return rows[0];
   }
 
+  async getUser(user){
+    const rows = await client
+      .query(
+        `SELECT s.name, r.rating
+        FROM "Service" s, "Review" r
+        WHERE r.serviceid = s.serviceid
+        AND r.userid = $1`,
+        [user]
+      )
+      .then((r) => r.rows)
+      .catch((err) => console.log(err));
+      return rows;
+  }
+
   async getServiceReviews(service) {
     const rows = await client
       .query(

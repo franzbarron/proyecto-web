@@ -32,10 +32,10 @@
                         {{#each history as |Preview|}}
                         <div class="columns text-center cajita">
                             <div class="column col-6 text-right ">
-                                <p>{{Preview.reviewname}}</p>
+                                <p>{{Preview.name}}</p>
                             </div>
                             <div class="column col-6 text-left ">
-                                <p>{{Preview.rating}}</p>
+                                <p>{{numToStars Preview.rating}}</p>
                             </div>
                         </div>
 
