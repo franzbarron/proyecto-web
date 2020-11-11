@@ -67,7 +67,7 @@ class DbController {
     return rows[0];
   }
 
-  async getUser(user){
+  async getUser(user) {
     const rows = await client
       .query(
         `SELECT s.name, r.rating
@@ -78,16 +78,17 @@ class DbController {
       )
       .then((r) => r.rows)
       .catch((err) => console.log(err));
-      return rows;
+    return rows;
   }
 
   async getServiceReviews(service) {
     const rows = await client
       .query(
-        `SELECT r.comment, u.nombre AS name, r.rating
+        `SELECT r.comment, u.nombre AS name, r.rating, u.fotourl, r.reviewdate
       FROM "Review" r, "Service" s, "User" u
       WHERE s.name=$1 AND r.serviceid=s.serviceid
-      AND r.userid=u.userid`,
+      AND r.userid=u.userid
+      ORDER BY r.reviewdate DESC`,
         [service]
       )
       .then((r) => r.rows)

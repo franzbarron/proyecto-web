@@ -30,4 +30,34 @@
     </section>
 </header>
 
-{{!-- {{> menu-m}} --}}
+<ul class="nav show-sm hidden">
+    <li class="nav-item">
+        <a href="#">RATEC</a>
+    </li>
+    <li class="nav-item">
+        <a href="#">Home</a>
+    </li>
+    <li class="nav-item">
+        <a href="#">Categories</a>
+    </li>
+    <ul class="nav">
+        <li class="nav-item">
+            <a href="/category/Instalaciones">Instalaciones</a>
+        </li>
+        <li class="nav-item">
+            <a href="/category/Cafeterías">Cafeterías</a>
+        </li>
+        <li class="nav-item">
+            <a href="/category/Servicios en línea">Servicios en línea</a>
+        </li>
+    </ul>
+    <li class="nav-item">
+        <a href="#">Profile</a>
+    </li>
+</ul>
+
+<script>
+    document.querySelector('#menu-btn').addEventListener('click', () => {
+        document.querySelector('.nav.show-sm').classList.toggle('hidden')
+    })
+</script>

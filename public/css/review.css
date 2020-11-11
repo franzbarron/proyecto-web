@@ -30,7 +30,9 @@
   width: 100%;
 }
 
-.sticky {
-  position: sticky;
-  top: 1.8rem;
+@media (max-width: 600px) {
+  .sticky {
+    position: sticky;
+    top: 1.8rem;
+  }
 }
