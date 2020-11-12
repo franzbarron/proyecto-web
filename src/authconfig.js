@@ -20,8 +20,8 @@ passport.use(
       callbackURL: 'http://localhost:8000/auth/callback'
     },
     async (accessToken, refreshToken, profile, done) => {
-      const { sub: id, name, picture, email } = profile._json;
-      const profileData = { id, name, picture, email };
+      const { sub: id, name, picture, email, given_name } = profile._json;
+      const profileData = { id, name, picture, email, given_name };
       const user = await db.findUser(id);
       if (!user) db.addUser(id, name, picture, email);
       return done(null, profileData);
