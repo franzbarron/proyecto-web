@@ -15,3 +15,8 @@ header {
 h1 {
   font-weight: 600;
 }
+
+.psize{
+  margin-top: 0.2rem;
+  font-size: 0.6rem;
+}
