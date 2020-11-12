@@ -1,0 +1,7 @@
+h2 {
+  margin-top: 2rem;
+}
+
+.column.col-6.text-right {
+  color: var(--ming);
+}

@@ -3,12 +3,15 @@
 
 <head>
     {{> head}}
+    <link rel="stylesheet" href="/css/home.css">
 </head>
 
 <body>
     {{> menu}}
     <div class="container grid-xl">
-        <h1>Home</h1>
+        <h1 class="text-center">Home</h1>
+        <p class="title">Welcome back, {{ name }}</p>
+        <h2>Categories</h2>
         <div class="columns">
             {{#each categories as |category|}}
                 <div class="col-md-12 col-4">
@@ -21,6 +24,28 @@
                         </div>
                         <div class="card-header">
                             <div class="card-title-h5"><a href="category/{{ category.name }}">{{ category.name }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+        <h2>Check out what other people are reviewing</h2>
+        <div class="columns">
+            {{#each mostRecentlyReviewed as |service|}}
+                <div class="col-md-12 col-4">
+                    <div class="card">
+                        <div class="card-image">
+                            <a href="review/{{ service.name }}">
+                                <img src="{{ service.img }}" alt="Picture of {{ service.name }}" class="img-responsive">
+                            </a>
+                        </div>
+                        <div class="card-header">
+                            <div class="card-title-h5 columns">
+                                <div class="column col-6">
+                                    <a href="/review/{{ service.name }}">{{ service.name }}</a>
+                                </div>
+                                <div class="column col-6 text-right">{{ numToStars service.avg }}</div>
                             </div>
                         </div>
                     </div>
