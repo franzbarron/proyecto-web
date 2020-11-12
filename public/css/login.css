@@ -1,14 +1,17 @@
-.lineBar {
-  border-bottom: 1px solid black;
-}
-
 header {
   padding: 0.5rem;
 }
 
-.container{
-  margin-top: 3em;
-  padding: 7em;
-  background-color: #252627;
-  color: aliceblue;
+.hero {
+  margin-top: 1.5rem;
+  padding-left: 3.5em;
+  padding-right: 3.5em;
+  background-color: var(--jet);
+  color: var(--white);
+  text-align: justify;
+  text-align-last: center;
+}
+
+h1 {
+  font-weight: 600;
 }

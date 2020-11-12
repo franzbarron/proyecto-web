@@ -80,3 +80,8 @@ li.nav-item {
 .card-image {
   border-bottom: solid #b8b8b8 1px;
 }
+
+.hero {
+  background-color: var(--jet);
+  color: var(--white);
+}

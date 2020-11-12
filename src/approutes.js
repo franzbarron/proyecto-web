@@ -22,7 +22,6 @@ router.get('/home', isLoggedIn, async (req, res) => {
   const categories = await db.getCategories();
   const { name } = req.user;
   const mostRecentlyReviewed = await db.getLatestReviewedServices(3);
-  console.log(mostRecentlyReviewed);
   res.render('home', { name, categories, mostRecentlyReviewed });
 });
 

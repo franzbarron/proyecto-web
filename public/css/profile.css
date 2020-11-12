@@ -1,27 +1,27 @@
-p{
-    margin-bottom: 0.2em;
-    
+p {
+  margin-bottom: 0.2em;
 }
 
-.cajita{
-    border: 0.1em solid rgb(116, 111, 111);
-    padding: 0.2em 0 0.2em 0;
-    margin-bottom: 0.1em;
+.cajita {
+  border: 0.1em solid #746f6f;
+  padding: 0.2em 0 0.2em 0;
+  margin-bottom: 0.1em;
 }
-.separacion{
-    margin-bottom: 0.5em;
+
+.separacion {
+  margin-bottom: 0.5em;
 }
+
 .tile {
-    border: solid #b8b8b8 1px;
-    margin: 0.5rem;
-    padding: 0.25rem;
-  }
-
-img{
-    margin: 0 auto;
+  border: solid #b8b8b8 1px;
+  margin: 0.5rem;
+  padding: 0.25rem;
 }
 
-.tile{
-  background-color: #DDE1E5; 
+img {
+  margin: 0 auto;
 }
 
+.tile {
+  background-color: #dde1e5;
+}
