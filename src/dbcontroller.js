@@ -89,7 +89,7 @@ class DbController {
   async getServiceReviews(service) {
     const rows = await client
       .query(
-        `SELECT r.comment, u.nombre AS name, r.rating, u.fotourl, r.reviewdate
+        `SELECT r.comment, u.nombre AS name, u.userid, r.rating, u.fotourl, r.reviewdate
       FROM "Review" r, "Service" s, "User" u
       WHERE s.name=$1 AND r.serviceid=s.serviceid
       AND r.userid=u.userid
@@ -160,6 +160,22 @@ class DbController {
         console.error(err);
       });
     return rows;
+  }
+
+  async getUserData(user) {
+    const rows = await client
+      .query(
+        `SELECT nombre AS name, fotourl AS img, email
+        FROM "User"
+        WHERE userid=$1`,
+        [user]
+      )
+      .then((r) => r.rows)
+      .catch((err) => {
+        console.error(err);
+      });
+
+    return rows[0];
   }
 }
 

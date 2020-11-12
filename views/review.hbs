@@ -46,7 +46,9 @@
                             </figure>
                         </div>
                         <div class="tile-content">
-                            <p class="tile-title"><span class="review-name">{{ review.name }}</span>
+                            <p class="tile-title">
+                                <span class="review-name"><a
+                                        href="/profile/{{ review.userid }}">{{ review.name }}</a></span>
                                 <span class="review-rating">{{ numToStars review.rating }}</span><br>
                                 <small>{{ parseDate review.reviewdate }}</small>
                             </p>

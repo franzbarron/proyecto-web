@@ -3,25 +3,28 @@
 
 <head>
     {{> head}}
-    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="/css/profile.css">
 </head>
 
 <body>
     {{> menu}}
     <div class="container grid-xl ">
-        <h1 class="text-left separacion">Profile</h1>
         <div class="columns">
             <div class="column col-md-12 col-3 text-center">
-                <img src="{{ img }}" class="img-responsive img-fit-cover" alt="Profile picture of student: {{ name }}">                
-                <h2>{{ name }}</h2>
-                <div class="columns">
-                    <div class="column col-3">
-                        <p><b>E-mail:</b></p>
-                        <p><b>Campus:</b></p>
-                    </div>
-                    <div class="column col-9">
-                        <p>{{email}}</p>
-                        <p>{{campus}}</p>
+                <div class="sticky">
+                    <h1 class="text-left separacion">Profile</h1>
+                    <img src="{{ img }}" class="img-responsive img-fit-cover"
+                        alt="Profile picture of student: {{ name }}">
+                    <h2>{{ name }}</h2>
+                    <div class="columns">
+                        <div class="column col-3">
+                            <p><b>E-mail:</b></p>
+                            <p><b>Campus:</b></p>
+                        </div>
+                        <div class="column col-9">
+                            <p>{{email}}</p>
+                            <p>{{campus}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -30,7 +33,8 @@
                 {{#each history as |review|}}
                     <div class="tile">
                         <div class="tile-content">
-                            <h5 class="tile-title"><span class="review-name">{{review.name}}</span>
+                            <h5 class="tile-title">
+                                <span class="review-name"><a href="/review/{{ review.name }}">{{review.name}}</a></span>
                                 <span class="review-rating">{{ numToStars review.rating }}</span><br>
                                 <small>{{ parseDate review.reviewdate }}</small>
                             </h5>

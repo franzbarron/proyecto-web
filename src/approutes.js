@@ -33,16 +33,32 @@ router.get('/category/:name', isLoggedIn, async (req, res) => {
   res.render('category', { name, servicios });
 });
 
-router.get('/profile', isLoggedIn, async (req, res) => {
-  const { name, id, picture: img, email } = req.user;
-  const userRevies = await db.getUserReviews(id);
+router.get('/profile/:id', async (req, res) => {
+  const { id } = req.params;
+  const { name, img, email } = await db.getUserData(id);
+  const userReviews = await db.getUserReviews(id);
 
   const data = {
     name,
     email,
     campus: 'Monterrey',
     img,
-    history: userRevies
+    history: userReviews
+  };
+
+  res.render('profile', data);
+});
+
+router.get('/profile', isLoggedIn, async (req, res) => {
+  const { name, id, picture: img, email } = req.user;
+  const userReviews = await db.getUserReviews(id);
+
+  const data = {
+    name,
+    email,
+    campus: 'Monterrey',
+    img,
+    history: userReviews
   };
   res.render('profile', data);
 });

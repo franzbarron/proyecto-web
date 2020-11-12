@@ -85,3 +85,7 @@ li.nav-item {
   background-color: var(--jet);
   color: var(--white);
 }
+
+.tile-title > * > a {
+  color: var(--ming);
+}
