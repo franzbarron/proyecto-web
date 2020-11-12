@@ -7,9 +7,8 @@ p {
   padding: 0.2em 0 0.2em 0;
   margin-bottom: 0.1em;
 }
-
 .separacion {
-  margin-bottom: 0.5em;
+  padding-top: 1rem;
 }
 
 .tile {
@@ -20,8 +19,5 @@ p {
 
 img {
   margin: 0 auto;
-}
-
-.tile {
-  background-color: #dde1e5;
+  border-radius: 50%;
 }
