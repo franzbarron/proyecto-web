@@ -9,7 +9,7 @@ p{
     margin-bottom: 0.1em;
 }
 .separacion{
-    margin-bottom: 0.5em;
+    padding-top: 1rem;
 }
 .tile {
     border: solid #b8b8b8 1px;
@@ -21,7 +21,6 @@ img{
     margin: 0 auto;
 }
 
-.tile{
-  background-color: #DDE1E5; 
-}
-
+img {
+    border-radius: 50%;
+  }
