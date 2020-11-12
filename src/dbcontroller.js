@@ -134,6 +134,33 @@ class DbController {
       [comment, userid, serviceid, rating, new Date()]
     );
   }
+
+  async getLatestReviewedServices(limit) {
+    const rows = client
+      .query(
+        `SELECT s.name, s.fotourl as img, a.avg
+        FROM  (
+            SELECT serviceid, AVG(rating)
+            FROM "Review"
+            GROUP BY serviceid
+        ) a, "Service" s
+        JOIN (
+            SELECT DISTINCT(serviceid), reviewdate
+            FROM "Review"
+            ORDER BY reviewdate DESC
+            LIMIT $1
+        ) r
+        ON s.serviceid=r.serviceid
+        WHERE s.serviceid=a.serviceid
+        ORDER BY r.reviewdate DESC;`,
+        [limit]
+      )
+      .then((r) => r.rows)
+      .catch((err) => {
+        console.error(err);
+      });
+    return rows;
+  }
 }
 
 module.exports = DbController;

@@ -18,9 +18,12 @@ router.get('/', (req, res) => {
   else res.render('login');
 });
 
-router.get('/home', isLoggedIn, async (_, res) => {
+router.get('/home', isLoggedIn, async (req, res) => {
   const categories = await db.getCategories();
-  res.render('home', { categories });
+  const { name } = req.user;
+  const mostRecentlyReviewed = await db.getLatestReviewedServices(3);
+  console.log(mostRecentlyReviewed);
+  res.render('home', { name, categories, mostRecentlyReviewed });
 });
 
 router.get('/category/:name', isLoggedIn, async (req, res) => {

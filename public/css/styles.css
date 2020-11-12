@@ -3,7 +3,6 @@
   --ming: #3c6e71;
   --white: #ffffff;
   --grainsboro: #ededed;
-  --grainsboro-secondary: #a9a9a9;
   --indigo: #284b63;
 }
 
@@ -45,7 +44,8 @@ li.nav-item {
   border: solid #b8b8b8 1px;
 }
 
-.card-title-h5 > a {
+.card-title-h5 > a,
+.card-title-h5 > div > a {
   color: var(--jet) !important;
 }
 
@@ -59,9 +59,6 @@ li.nav-item {
   background-color: white;
   z-index: 99;
 }
-.tile-subtitle {
-  text-overflow: '';
-}
 
 .btn.btn-primary {
   background-color: var(--ming);
@@ -72,16 +69,14 @@ li.nav-item {
   border-color: #2b5052;
 }
 
-.btn.btn-secondary {
-  background-color: #00887a;
-  color: var(--white);
-  border-color: #2b5052;
-}
-.btn.btn-secondary:hover {
-  background-color: var(--grainsboro);
-  border-color: #2b5052;
-}
-
 .review-rating {
   color: var(--ming);
+}
+
+.title {
+  font-size: large;
+}
+
+.card-image {
+  border-bottom: solid #b8b8b8 1px;
 }
