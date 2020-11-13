@@ -34,8 +34,10 @@
                     <div class="tile">
                         <div class="tile-content">
                             <h5 class="tile-title">
-                                <span class="review-name"><a href="/review/{{ review.name }}">{{review.name}}</a></span>
-                                <span class="review-rating">{{ numToStars review.rating }}</span><br>
+                                <span class="review-name">
+                                    <a href="/review/{{ review.name }}" class="link-jet">{{review.name}}</a>
+                                </span>
+                                <span class="stars">{{ numToStars review.rating }}</span><br>
                                 <small>{{ parseDate review.reviewdate }}</small>
                             </h5>
                             <p class="tile-subtitle">{{ review.comment}}</p>

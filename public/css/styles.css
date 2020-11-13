@@ -44,8 +44,7 @@ li.nav-item {
   border: solid #b8b8b8 1px;
 }
 
-.card-title-h5 > a,
-.card-title-h5 > div > a {
+.link-jet {
   color: var(--jet) !important;
 }
 
@@ -64,13 +63,10 @@ li.nav-item {
   background-color: var(--ming);
   border-color: #2b5052;
 }
+
 .btn.btn-primary:hover {
   background-color: #325c5e;
   border-color: #2b5052;
-}
-
-.review-rating {
-  color: var(--ming);
 }
 
 .title {
@@ -81,11 +77,6 @@ li.nav-item {
   border-bottom: solid #b8b8b8 1px;
 }
 
-.hero {
-  background-color: var(--jet);
-  color: var(--white);
-}
-
-.tile-title > * > a {
-  color: var(--jet);
+.stars {
+  color: var(--ming);
 }

@@ -14,7 +14,7 @@
 }
 
 .unselected-star {
-  color: white !important;
+  color: var(--white) !important;
 }
 
 .selected-star {

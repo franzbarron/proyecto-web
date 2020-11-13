@@ -9,17 +9,17 @@
 <body>
     {{> menu}}
     <div class="container grid-xl">
-        <div class="toast toast-error hidden">
-            <button class="btn btn-clear float-right"></button>
-            Please rate {{ name }} before submiting your review.
-        </div>
         <div class="columns">
             <div class="column col-md-12 col-6">
                 <div class="sticky">
+                    <div class="toast toast-error hidden">
+                        <button class="btn btn-clear float-right"></button>
+                        Please rate {{ name }} before submiting your review.
+                    </div>
                     <h1>{{ name }}</h1>
                     <img src="{{ image }}" alt="Picture of {{ name }}" class="img-responsive">
                     <div class="columns">
-                        <div class="column col-4">{{ numToStars rating }}</div>
+                        <div class="column col-4 stars">{{ numToStars rating }}</div>
                         <div class="column col-8 text-right">{{ total-reviews }} people have reviewed this place</div>
                     </div>
                     <h2>Add your review</h2>
@@ -47,9 +47,10 @@
                         </div>
                         <div class="tile-content">
                             <p class="tile-title">
-                                <span class="review-name"><a
-                                        href="/profile/{{ review.userid }}">{{ review.name }}</a></span>
-                                <span class="review-rating">{{ numToStars review.rating }}</span><br>
+                                <span class="review-name">
+                                    <a href="/profile/{{ review.userid }}" class="link-jet">{{ review.name }}</a>
+                                </span>
+                                <span class="stars">{{ numToStars review.rating }}</span><br>
                                 <small>{{ parseDate review.reviewdate }}</small>
                             </p>
                             <p class="tile-subtitle">{{ review.comment}}</p>

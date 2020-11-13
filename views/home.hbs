@@ -23,7 +23,8 @@
                             </a>
                         </div>
                         <div class="card-header">
-                            <div class="card-title-h5"><a href="category/{{ category.name }}">{{ category.name }}</a>
+                            <div class="card-title-h5">
+                                <a class="link-jet" href="category/{{ category.name }}">{{ category.name }}</a>
                             </div>
                         </div>
                     </div>
@@ -45,7 +46,7 @@
                                 <div class="column col-6">
                                     <a href="/review/{{ service.name }}">{{ service.name }}</a>
                                 </div>
-                                <div class="column col-6 text-right">{{ numToStars service.avg }}</div>
+                                <div class="column col-6 text-right stars">{{ numToStars service.avg }}</div>
                             </div>
                         </div>
                     </div>

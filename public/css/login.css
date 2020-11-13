@@ -16,7 +16,11 @@ h1 {
   font-weight: 600;
 }
 
-.psize{
+.psize {
   margin-top: 0.2rem;
   font-size: 0.6rem;
+}
+
+p {
+  font-size: larger;
 }

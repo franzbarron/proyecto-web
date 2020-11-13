@@ -53,7 +53,7 @@ hbs.registerHelper('parseDate', (date) =>
   })
 );
 
-// ===a===
+// ===app listener===
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
