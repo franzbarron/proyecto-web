@@ -1,5 +1,5 @@
 // Use .env file for environment variables
-require('dotenv').config();
+// require('dotenv').config();
 
 // ===dependencies===
 const express = require('express');
