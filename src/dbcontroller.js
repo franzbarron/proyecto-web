@@ -55,8 +55,7 @@ class DbController {
   }
 
   async getAllServices(category) {
-    console.log(category);
-    const rows = await client
+    let rows = await client
       .query(
         `SELECT s.name, s.fotourl AS img, AVG(r.rating) as rating
         FROM "Service" s, "Category" c, "Review" r
@@ -68,7 +67,19 @@ class DbController {
       )
       .then((r) => r.rows)
       .catch((err) => console.error(err));
-    console.log(rows);
+
+    if (rows.length === 0) {
+      rows = await client
+        .query(
+          `SELECT s.name, s.fotourl AS img
+          FROM "Service" s, "Category" c
+          WHERE c.name=$1
+          AND s.category=c.categoryid`,
+          [category]
+        )
+        .then((r) => r.rows)
+        .catch((err) => console.error(err));
+    }
 
     return rows;
   }

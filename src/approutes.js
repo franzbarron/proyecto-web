@@ -27,11 +27,10 @@ router.get('/home', isLoggedIn, async (req, res) => {
 
 router.get('/category/:name', isLoggedIn, async (req, res) => {
   const { name } = req.params;
-  console.log(name);
 
   const servicios = await db.getAllServices(name);
 
-  console.log('Servicios', servicios);
+  console.log({ servicios });
 
   res.render('category', { name, servicios });
 });
