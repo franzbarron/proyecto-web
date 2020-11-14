@@ -21,6 +21,11 @@ const client = new Client(clientConfig);
 
 client.connect();
 
+client.query('SELECT NOW()', (err, res) => {
+  if (err) console.error(err);
+  else console.log(`Connection with db made on ${res.rows[0].now}`);
+});
+
 class DbController {
   constructor() {}
 
