@@ -67,6 +67,7 @@ class DbController {
       )
       .then((r) => r.rows)
       .catch((err) => console.error(err));
+    console.log(rows);
 
     return rows;
   }

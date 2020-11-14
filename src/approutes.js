@@ -30,6 +30,8 @@ router.get('/category/:name', isLoggedIn, async (req, res) => {
 
   const servicios = await db.getAllServices(name);
 
+  console.log('Servicios', servicios);
+
   res.render('category', { name, servicios });
 });
 
