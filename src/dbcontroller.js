@@ -5,9 +5,7 @@ let clientConfig;
 if (process.env.PRODUCTION) {
   clientConfig = {
     connectionString: process.env.DATABASE_URL,
-    ssl: {
-      rejectUnauthorized: false
-    }
+    ssl: true
   };
 } else {
   clientConfig = {
