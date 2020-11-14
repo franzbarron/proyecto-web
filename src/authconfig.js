@@ -5,12 +5,10 @@ const dbController = require('./dbcontroller');
 const db = new dbController();
 
 passport.serializeUser((user, done) => {
-  console.log('Hello from serialize user');
   done(null, user);
 });
 
 passport.deserializeUser((user, done) => {
-  console.log('Hello from deserialize user');
   done(null, user);
 });
 

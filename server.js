@@ -1,4 +1,4 @@
-// Use .env file for environment variables
+// Use .env file for environment variables. Comment the line before pushing to master just in case
 // require('dotenv').config();
 
 // ===dependencies===
