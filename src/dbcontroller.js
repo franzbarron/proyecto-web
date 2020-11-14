@@ -55,6 +55,7 @@ class DbController {
   }
 
   async getAllServices(category) {
+    console.log(category);
     const rows = await client
       .query(
         `SELECT s.name, s.fotourl AS img, AVG(r.rating) as rating
