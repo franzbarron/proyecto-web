@@ -57,29 +57,27 @@ class DbController {
   async getAllServices(category) {
     let rows = await client
       .query(
-        `SELECT s.name, s.fotourl AS img, AVG(r.rating) as rating
-        FROM "Service" s, "Category" c, "Review" r
+        `SELECT s.name, s.fotourl AS img, CASE 
+            WHEN AVG(s.rating) IS NULL THEN 0
+            ELSE AVG(s.rating)
+        END AS rating
+        FROM "Category" c, (
+            SELECT s.*, r.rating
+            FROM "Service" s
+            LEFT JOIN (
+                SELECT serviceid, AVG(rating) AS rating
+                FROM "Review"
+                GROUP BY serviceid
+            ) r
+            ON s.serviceid=r.serviceid
+        ) s
         WHERE c.name=$1
         AND s.category=c.categoryid
-        AND r.serviceid=s.serviceid
-        GROUP BY s.name, img`,
+        GROUP BY s.name, img;`,
         [category]
       )
       .then((r) => r.rows)
       .catch((err) => console.error(err));
-
-    if (rows.length === 0) {
-      rows = await client
-        .query(
-          `SELECT s.name, s.fotourl AS img
-          FROM "Service" s, "Category" c
-          WHERE c.name=$1
-          AND s.category=c.categoryid`,
-          [category]
-        )
-        .then((r) => r.rows)
-        .catch((err) => console.error(err));
-    }
 
     return rows;
   }

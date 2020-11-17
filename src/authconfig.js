@@ -23,7 +23,6 @@ passport.use(
       const { sub: id, name, picture, email, given_name } = profile._json;
       const profileData = { id, name, picture, email, given_name };
       const user = await db.findUser(id);
-      console.log('Hello from Google Strategy');
       if (!user) db.addUser(id, name, picture, email);
       return done(null, profileData);
     }
