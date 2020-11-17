@@ -17,13 +17,17 @@
                         alt="Profile picture of student: {{ name }}">
                     <h2>{{ name }}</h2>
                     <div class="columns">
-                        <div class="column col-3">
+                        <div class="column col-5">
                             <p><b>E-mail:</b></p>
                             <p><b>Campus:</b></p>
+                            <p><b>Total reviews:</b></p>
+                            <p><b>Average rating:</b></p>
                         </div>
-                        <div class="column col-9">
+                        <div class="column col-7">
                             <p>{{email}}</p>
                             <p>{{campus}}</p>
+                            <p>{{totalreviews}}</p>
+                            <p class="stars">{{numToStars average}}</p>
                         </div>
                     </div>
                 </div>

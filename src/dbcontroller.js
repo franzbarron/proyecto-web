@@ -188,9 +188,28 @@ class DbController {
   async getUserData(user) {
     const rows = await client
       .query(
-        `SELECT nombre AS name, fotourl AS img, email
-        FROM "User"
-        WHERE userid=$1`,
+        `SELECT COUNT(r.rating) AS totalreviews, AVG(r.rating) AS average
+        FROM "User" u, "Review" r
+        WHERE u.userid=$1
+        AND r.userid=u.userid`,
+        [user]
+      )
+      .then((r) => r.rows)
+      .catch((err) => {
+        console.error(err);
+      });
+
+    return rows[0];
+  }
+
+  async getFullUserData(user) {
+    const rows = await client
+      .query(
+        `SELECT u.nombre AS name, u.fotourl AS img, u.email, COUNT(r.rating) AS totalreviews, AVG(r.rating) AS average
+        FROM "User" u, "Review" r
+        WHERE u.userid=$1
+        AND r.userid=u.userid
+        GROUP BY name, img, u.email;`,
         [user]
       )
       .then((r) => r.rows)

@@ -1,5 +1,5 @@
 // Use .env file for environment variables. Comment the line before pushing to master just in case
-require('dotenv').config();
+// require('dotenv').config();
 
 // ===dependencies===
 const express = require('express');

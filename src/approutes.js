@@ -35,15 +35,13 @@ router.get('/category/:name', isLoggedIn, async (req, res) => {
 
 router.get('/profile/:id', async (req, res) => {
   const { id } = req.params;
-  const { name, img, email } = await db.getUserData(id);
+  const userData = await db.getFullUserData(id);
   const userReviews = await db.getUserReviews(id);
 
   const data = {
-    name,
-    email,
     campus: 'Monterrey',
-    img,
-    history: userReviews
+    history: userReviews,
+    ...userData
   };
 
   res.render('profile', data);
@@ -52,13 +50,15 @@ router.get('/profile/:id', async (req, res) => {
 router.get('/profile', isLoggedIn, async (req, res) => {
   const { name, id, picture: img, email } = req.user;
   const userReviews = await db.getUserReviews(id);
+  const userData = await db.getUserData(id);
 
   const data = {
     name,
     email,
     campus: 'Monterrey',
     img,
-    history: userReviews
+    history: userReviews,
+    ...userData
   };
   res.render('profile', data);
 });
