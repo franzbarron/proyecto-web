@@ -9,6 +9,7 @@
 body {
   background-color: var(--grainsboro);
   color: var(--jet) !important;
+  margin-bottom: 1em;
 }
 
 header {
