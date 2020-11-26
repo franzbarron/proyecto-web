@@ -168,16 +168,14 @@ class DbController {
             GROUP BY serviceid
         ) a, "Service" s
         JOIN (
-            SELECT DISTINCT(r.serviceid)
-            FROM (
-                SELECT serviceid, reviewdate
-                FROM "Review"
-                ORDER BY reviewdate DESC
-            ) r
-        LIMIT $1
+            SELECT DISTINCT(serviceid), reviewdate
+            FROM "Review"
+            ORDER BY reviewdate DESC
+            LIMIT $1
         ) r
         ON s.serviceid=r.serviceid
-        WHERE s.serviceid=a.serviceid`,
+        WHERE s.serviceid=a.serviceid
+        ORDER BY r.reviewdate DESC`,
         [limit]
       )
       .then((r) => r.rows)
