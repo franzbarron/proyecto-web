@@ -33,6 +33,15 @@ router.get('/category/:name', isLoggedIn, async (req, res) => {
   res.render('category', { name, servicios });
 });
 
+router.get('/categories', isLoggedIn, async (req, res) => {
+  const categories = await db.getCategories().catch((err) => {
+    console.error(err);
+    return res.sendStatus(500);
+  });
+
+  res.render('categories', { categories });
+});
+
 router.get('/profile/:id', async (req, res) => {
   const { id } = req.params;
   const userData = await db.getFullUserData(id);

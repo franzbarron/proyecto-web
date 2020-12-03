@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{> head}}
+</head>
+
+<body>
+    {{> menu}}
+    <div class="container grid-xl">
+        <h1>Categories</h1>
+        <div class="columns">
+            {{#each categories as |category|}}
+                <div class="col-md-12 col-4">
+                    <div class="card">
+                        <div class="card-image">
+                            <a href="/category/{{ category.name }}">
+                                <img src="{{ category.img }}" alt="Picture of {{ category.name }}"
+                                    class="img-responsive">
+                            </a>
+                        </div>
+                        <div class="card-header">
+                            <div class="card-title-h5 columns">
+                                <div class="column col-6">
+                                    <a href="/category/{{ category.name }}" class="link-jet">{{ category.name }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</body>
+
+</html>
