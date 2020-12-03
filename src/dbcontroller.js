@@ -161,21 +161,20 @@ class DbController {
   async getLatestReviewedServices(limit) {
     const rows = client
       .query(
-        `SELECT s.name, s.fotourl as img, a.avg
-        FROM  (
+        `SELECT s.name, s.fotourl AS img, a.avg, r.serviceid
+        FROM (
+            SELECT DISTINCT ON (serviceid) *
+            FROM "Review"
+            ORDER BY serviceid, reviewdate DESC
+        ) r, (
             SELECT serviceid, AVG(rating)
             FROM "Review"
             GROUP BY serviceid
         ) a, "Service" s
-        JOIN (
-            SELECT DISTINCT(serviceid), reviewdate
-            FROM "Review"
-            ORDER BY reviewdate DESC
-            LIMIT $1
-        ) r
-        ON s.serviceid=r.serviceid
-        WHERE s.serviceid=a.serviceid
-        ORDER BY r.reviewdate DESC`,
+        WHERE s.serviceid=r.serviceid
+        AND s.serviceid=a.serviceid
+        ORDER BY reviewdate DESC
+        LIMIT $1`,
         [limit]
       )
       .then((r) => r.rows)
